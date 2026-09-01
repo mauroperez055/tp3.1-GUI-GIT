@@ -67,8 +67,6 @@ public class Login extends javax.swing.JFrame {
         lblPass.setForeground(new java.awt.Color(0, 0, 0));
         lblPass.setText("Contraseña:");
 
-        txtPass.setText("jPasswordField1");
-
         btnVerificar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVerificar.setForeground(new java.awt.Color(0, 0, 0));
         btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/icons8-cliente-windows-48.png"))); // NOI18N
@@ -148,10 +146,20 @@ public class Login extends javax.swing.JFrame {
         btnOcultarPass.setForeground(new java.awt.Color(0, 0, 0));
         btnOcultarPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/icons7-ocultar-contraseña-50.png"))); // NOI18N
         btnOcultarPass.setText("Ocultar");
+        btnOcultarPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOcultarPassActionPerformed(evt);
+            }
+        });
 
         btnVerPass.setForeground(new java.awt.Color(0, 0, 0));
         btnVerPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/icons7-mostrar-contraseña-50.png"))); // NOI18N
         btnVerPass.setText("Ver");
+        btnVerPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPassActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,6 +187,16 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVerPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPassActionPerformed
+        // TODO add your handling code here:
+        txtPass.setEchoChar((char)0);
+    }//GEN-LAST:event_btnVerPassActionPerformed
+
+    private void btnOcultarPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcultarPassActionPerformed
+        // TODO add your handling code here:
+        txtPass.setEchoChar('*');
+    }//GEN-LAST:event_btnOcultarPassActionPerformed
 
     /**
      * @param args the command line arguments
