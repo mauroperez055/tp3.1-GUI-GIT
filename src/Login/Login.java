@@ -4,6 +4,9 @@
  */
 package Login;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mauro Perez
@@ -71,6 +74,11 @@ public class Login extends javax.swing.JFrame {
         btnVerificar.setForeground(new java.awt.Color(0, 0, 0));
         btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Login/icons8-cliente-windows-48.png"))); // NOI18N
         btnVerificar.setText("Verificar");
+        btnVerificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVerificarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCentralLayout = new javax.swing.GroupLayout(pnlCentral);
         pnlCentral.setLayout(pnlCentralLayout);
@@ -79,18 +87,18 @@ public class Login extends javax.swing.JFrame {
             .addGroup(pnlCentralLayout.createSequentialGroup()
                 .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlCentralLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(40, 40, 40)
                         .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPass)
                             .addComponent(lblUser))
-                        .addGap(39, 39, 39)
+                        .addGap(30, 30, 30)
                         .addGroup(pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUser)
-                            .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
+                            .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(txtUser)))
                     .addGroup(pnlCentralLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         pnlCentralLayout.setVerticalGroup(
             pnlCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,6 +205,20 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtPass.setEchoChar('*');
     }//GEN-LAST:event_btnOcultarPassActionPerformed
+
+    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+        // TODO add your handling code here:
+        char[] passArray = txtPass.getPassword();
+        String password = new String (passArray);
+        
+        if (txtUser.getText().equals("alumno@ulp.edu.ar") && password.equals("12345678")) {
+            ImageIcon icon = new ImageIcon(getClass().getResource("icons8-check-mark-48.png"));
+            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso", "Bienvenido!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } else {
+            ImageIcon icon = new ImageIcon(getClass().getResource("icons8-cross-mark-48.png"));
+            JOptionPane.showMessageDialog(this, "Usuario y/o contraseña incorrectos", "Error!", HEIGHT, icon);
+        }
+    }//GEN-LAST:event_btnVerificarMouseClicked
 
     /**
      * @param args the command line arguments
